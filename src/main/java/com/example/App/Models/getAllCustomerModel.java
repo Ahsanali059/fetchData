@@ -1,6 +1,5 @@
 package com.example.App.Models;
 
-import java.rmi.server.LoaderHandler;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.HashMap;
@@ -26,9 +25,10 @@ public class getAllCustomerModel extends AdminUsersResourceModel implements admi
 	
 	
 
-	public getAllCustomerModel() {
+	public getAllCustomerModel(HttpSession httpSession) 
+	{
 		super();
-		// TODO Auto-generated constructor stub
+		this.httpSession = httpSession;
 	}
 
 
@@ -54,11 +54,10 @@ public class getAllCustomerModel extends AdminUsersResourceModel implements admi
 				//customerData.put("interface_local", resultSet.getString(18));
 				
 				//store all attributes in Session 
-				
-				httpSession.setAttribute("customerData", customerData);
-			
-				
-				
+				if(httpSession!=null)
+				{
+					httpSession.setAttribute("customerData", customerData);
+				}
 				
 				
 			}
