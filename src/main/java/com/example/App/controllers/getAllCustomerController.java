@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.ServletContext; // Add this import
 
 import com.example.App.Models.getAllCustomerModel;
@@ -21,10 +22,12 @@ public class getAllCustomerController extends HttpServlet
     public static ServletContext servletContext;
     
     public getAllCustomerModel getAllCustomerModel;
+    
+    public HttpSession httpSession;
 
     public getAllCustomerController() {
         super();
-        this.getAllCustomerModel = new getAllCustomerModel();
+        this.getAllCustomerModel = new getAllCustomerModel(httpSession);
     }
 
     @Override
@@ -52,7 +55,8 @@ public class getAllCustomerController extends HttpServlet
         {
         	out.println("<h3 style='color=red'>something went wrong in controller layer</h3>");
             response.sendRedirect("/com.example.App/admin/users/register?key=" + this.sfmsSystemKey.toLowerCase() + "&error=" + error + "&message=" + message);
-        } else 
+        } 
+        else 
         {
             // Redirect to the profile page 
         }

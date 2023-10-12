@@ -10,16 +10,15 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
-      <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3 mt-5">
-                <h1 class="text-center">Registration Page</h1>
-
-                <button class="btn btn-primary btn-lg btn-block" onclick="location.href='views/register.jsp'">
-                   Register
-                </button>
-            </div>
-        </div>
+     <h1>Server started</h1>
+     
+     
+        
+          
+        
+        
+        
+        -->
     </div>      
 </body>
 </html>

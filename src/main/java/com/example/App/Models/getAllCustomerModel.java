@@ -31,8 +31,6 @@ public class getAllCustomerModel extends AdminUsersResourceModel implements admi
 		this.httpSession = httpSession;
 	}
 
-
-
 	public Map<String, Object> getCustomer(String userId) 
 	{
 		this.methodResponse = this.prepareResponse(false,true,
@@ -40,8 +38,6 @@ public class getAllCustomerModel extends AdminUsersResourceModel implements admi
 				"Something went wrong while fetching the Customer..");
 		try 
 		{
-			
-			
 			if(resultSet.next())
 			{
 				Map<String, String> customerData = new HashMap<String, String>();
@@ -53,14 +49,14 @@ public class getAllCustomerModel extends AdminUsersResourceModel implements admi
 				customerData.put(adminUsersInterface.TABLE_ADMIN_USER_ADMIN_TYPE, resultSet.getString(14));
 				//customerData.put("interface_local", resultSet.getString(18));
 				
-				//store all attributes in Session 
+				
 				if(httpSession!=null)
 				{
 					httpSession.setAttribute("customerData", customerData);
 				}
-				
-				
+			
 			}
+			
 			this.methodResponse = this.load(userId);
 			
 			
@@ -70,9 +66,15 @@ public class getAllCustomerModel extends AdminUsersResourceModel implements admi
 		} catch (Exception e) 
 		{
 			e.printStackTrace();
+			this.methodResponse = this.prepareResponse(false,true,AbstractResourceModel.METHOD_RESPONSE_ERROR_TYPE_FAILED,
+					"An error occurred while fetching customer data.");
+			
+			
 		}
 		
 		return this.methodResponse;
+		
+		
 	}
 	
 	
