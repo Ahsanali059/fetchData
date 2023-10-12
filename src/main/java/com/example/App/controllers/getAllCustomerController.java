@@ -12,9 +12,14 @@ import javax.servlet.ServletContext; // Add this import
 
 import com.example.App.Models.getAllCustomerModel;
 
-public class getAllCustomerController extends HttpServlet {
+
+//in future this class inherit SuperRouter
+public class getAllCustomerController extends HttpServlet 
+{
     private static final long serialVersionUID = 1L;
+    
     public static ServletContext servletContext;
+    
     public getAllCustomerModel getAllCustomerModel;
 
     public getAllCustomerController() {
@@ -34,19 +39,21 @@ public class getAllCustomerController extends HttpServlet {
         this.getAllCustomerModel.setSessionManager(this.setSession());
 
         
-        String userId = request.getParameter("userId"); // This assumes userId is sent as a request parameter
+        String userId = request.getParameter("user_id"); 
 
-        Map<String, Object> getAllCustomerModelResponse = this.getAllCustomerModel.load(userId);
+        Map<String, Object> getAllCustomerModelResponse = this.getAllCustomerModel.getCustomer(userId);
 
         response.setContentType("text/html");
 
         Boolean error = (Boolean) getAllCustomerModelResponse.get("error");
         String message = (String) getAllCustomerModelResponse.get("message");
 
-        if (error == true) {
-        	out.println("<h3 style='color=red'>something went wrong for getting the user from database</h3>");
+        if (error == true) 
+        {
+        	out.println("<h3 style='color=red'>something went wrong in controller layer</h3>");
             response.sendRedirect("/com.example.App/admin/users/register?key=" + this.sfmsSystemKey.toLowerCase() + "&error=" + error + "&message=" + message);
-        } else {
+        } else 
+        {
             // Redirect to the profile page 
         }
     }

@@ -6,6 +6,8 @@ import java.sql.ResultSetMetaData;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 public class getAllCustomerModel extends AdminUsersResourceModel implements adminUsersInterface
 {
 	public static final long SerialVersionUID = 1L;
@@ -19,6 +21,8 @@ public class getAllCustomerModel extends AdminUsersResourceModel implements admi
 	public String tageType;
 	
 	public Map<String, String> requestParams;
+	
+	public HttpSession httpSession;
 	
 	
 
@@ -34,10 +38,6 @@ public class getAllCustomerModel extends AdminUsersResourceModel implements admi
 		this.methodResponse = this.prepareResponse(false,true,
 				AbstractResourceModel.METHOD_RESPONSE_ERROR_TYPE_FAILED,
 				"Something went wrong while fetching the Customer..");
-		
-		
-		
-		
 		try 
 		{
 			
@@ -51,9 +51,12 @@ public class getAllCustomerModel extends AdminUsersResourceModel implements admi
 				customerData.put(adminUsersInterface.TABLE_ADMIN_USER_ADMIN_PHONE, resultSet.getString(4));
 				customerData.put(adminUsersInterface.TABLE_ADMIN_USER_USERNAME, resultSet.getString(5));
 				customerData.put(adminUsersInterface.TABLE_ADMIN_USER_ADMIN_TYPE, resultSet.getString(14));
-				customerData.put("interface_local", resultSet.getString(18));
+				//customerData.put("interface_local", resultSet.getString(18));
 				
 				//store all attributes in Session 
+				
+				httpSession.setAttribute("customerData", customerData);
+			
 				
 				
 				
