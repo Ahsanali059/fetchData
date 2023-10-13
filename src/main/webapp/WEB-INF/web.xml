@@ -4,4 +4,16 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  
+  <servlet>
+	  <servlet-name>getAllUserController</servlet-name>
+	  <servlet-class>com.example.App.controllers.getAllUserController</servlet-class>
+  </servlet>
+  
+  
+  <servlet-mapping>
+	  <servlet-name>getAllUserController</servlet-name>
+	  <url-pattern>/getAllUsers</url-pattern>
+  </servlet-mapping>
 </web-app>
